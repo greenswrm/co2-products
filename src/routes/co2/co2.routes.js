@@ -12,6 +12,6 @@ co2Router.post("/product", productCo2Fetch);
 co2Router.post("/products", productsCo2Fetch);
 
 // co2Router.post("/access", homeController.createAccess);
-co2Router.get("/access", Home.getAccess);
+co2Router.post("/access", Home.getAccess);
 
 export default co2Router;

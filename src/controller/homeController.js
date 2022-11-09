@@ -1,30 +1,29 @@
 import AccessModel from '../models/accessModel.js';
 
 export default class homeController{
-    createAccess(){
-        // ben@greenswrm.com / skbD$$jU72eNv$4
+    async createAccess(){
+        const {accessToken, domain, email} = req.body;
+        const token = await AccessModel.findOne({domain, email});
 
+        if(token)
+            return res.status(400).json({success: false});
 
+        if(!accessToken || !domain || !email)
+            return res.status(400).json({success: false});
 
+        await AccessModel.create({email, domain, accessToken});
 
-
-
-
-
-        console.log(AccessModel);
-
-
-
-
+        res.status(200).json({success: true});
     }
-    getAccess(){
 
 
+    async getAccess(req, res, next){
+        const {domain} = req.body;
+        const data = await AccessModel.findOne({domain});
 
-        AccessModel.create()
+        if(!data)
+           res.status(204).json({success: false});
 
-
-        console.log('ok');
-
+        res.status(200).json({success: true, data});
     }
 }
