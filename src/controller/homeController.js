@@ -1,7 +1,7 @@
 import AccessModel from '../models/accessModel.js';
 
 export default class homeController{
-    async createAccess(){
+    async createAccess(req, res, next){
         const {accessToken, domain, email} = req.body;
         const token = await AccessModel.findOne({domain, email});
 
