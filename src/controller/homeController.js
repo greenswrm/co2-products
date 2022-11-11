@@ -6,10 +6,10 @@ export default class homeController{
         const token = await AccessModel.findOne({domain, email});
 
         if(token)
-            return res.status(400).json({success: false});
+            return res.status(200).json({success: false});
 
         if(!accessToken || !domain || !email)
-            return res.status(400).json({success: false});
+            return res.status(200).json({success: false});
 
         await AccessModel.create({email, domain, accessToken});
 
@@ -22,7 +22,7 @@ export default class homeController{
         const data = await AccessModel.findOne({domain});
 
         if(!data)
-           res.status(204).json({success: false});
+           res.status(200).json({success: false});
 
         res.status(200).json({success: true, data});
     }

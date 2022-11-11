@@ -21,17 +21,17 @@ export default async function productsCo2Fetch(req, res) {
       'Content-Type': 'application/json;charset=UTF-8',
       "X-Api-Key": `aSaUwe2STF2YrP6YKObbW5NaRzWWCIK64VN9eJKd`,
     }
-  }
+  };
 
   try {
-    const response =  await axios.post('https://drae0rwffi.execute-api.us-east-1.amazonaws.com/prod/main/calculator-v2',productsData,config)
+    const response =  await axios.post('https://drae0rwffi.execute-api.us-east-1.amazonaws.com/prod/main/calculator-v2',productsData,config);
     if(response.status === 200){
-      res.json(response.data)
+      res.json(response.data);
     }
   } 
   catch (error) {
-    console.log(error.message)
-    res.send(error)
+    console.log(error.message);
+    res.json(error);
   }
   
 }

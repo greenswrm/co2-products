@@ -26,12 +26,12 @@ export default async function productCo2Fetch(req, res) {
   try {
     const response =  await axios.post('https://drae0rwffi.execute-api.us-east-1.amazonaws.com/prod/main/calculator',productData,config)
     if(response.status === 200){
-      res.json(response.data)
+      res.json(response.data);
     }
   } 
   catch (error) {
-    console.log(error.message)
-    res.send(error)
+    console.log(error.message);
+    res.json(error);
   }
   
 }
